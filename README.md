@@ -1,6 +1,7 @@
 ## My modification
 - Install `cryptodome` by: ``pip install pycryptodomex python-gnupg`` (in py27 env)
 - Install `matplotlib` by: ``conda install matplotlib``
+- Error when compiling: cannot find `yaml` libs. --> compile [yaml-cpp](https://github.com/jbeder/yaml-cpp), and add `yaml-cpp` in `target_link_libraries` in `CMakeLists.txt` in `allan_variance_ros`.
 - Error when rearrange the rosbag. "Failed to load Python extension for LZ4 support. LZ4 compression will not be available."  -> delete "LZ4" compression in `cookbag.py`
 
 **Usage**  
