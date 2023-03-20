@@ -1,3 +1,14 @@
+## My modification
+- Install `cryptodome` by: ``pip install pycryptodomex python-gnupg`` (in py27 env)
+- Install `matplotlib` by: ``conda install matplotlib``
+- Error when rearrange the rosbag. "Failed to load Python extension for LZ4 support. LZ4 compression will not be available."  -> delete "LZ4" compression in `cookbag.py`
+
+**Usage**  
+``rosrun allan_variance_ros allan_variance [path_to_folder_containing_bag] [path_to_config_file]``
+- The code try to find a "xxx.bag" in `[path_to_folder_containing_bag]`, and the output is just in this folder.
+- [path_to_config_file] is a yaml file, which includes topics and imu rate. See samples in ``allan_variance_ros/config`` folder.
+
+
 # Allan Variance ROS
 ## ROS package which loads a rosbag of IMU data and computes Allan Variance parameters
 The purpose of this tool is to read a long sequence of IMU data and compute the Angle Random Walk (ARW), Bias Instability and Gyro Random Walk for the gyroscope as well as Velocity Random Walk (VRW), Bias Instability and Accel Random Walk for the accelerometer.
