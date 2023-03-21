@@ -1,14 +1,21 @@
 ## My modification
+**Issues when install**
 - Install `cryptodome` by: ``pip install pycryptodomex python-gnupg`` (in py27 env)
 - Install `matplotlib` by: ``conda install matplotlib``
 - Error when compiling: cannot find `yaml` libs. --> compile [yaml-cpp](https://github.com/jbeder/yaml-cpp), and add `yaml-cpp` in `target_link_libraries` in `CMakeLists.txt` in `allan_variance_ros`.
-- Error when rearrange the rosbag. "Failed to load Python extension for LZ4 support. LZ4 compression will not be available."  -> delete "LZ4" compression in `cookbag.py`
+- Error when rearrange the rosbag. "Failed to load Python extension for LZ4 support. LZ4 compression will not be available."  -> delete "LZ4" compression in `cookbag.py`, or chekc [this issue](https://github.com/ori-drs/allan_variance_ros/issues/11#issuecomment-1209007323)
 
 **Usage**  
 ``rosrun allan_variance_ros allan_variance [path_to_folder_containing_bag] [path_to_config_file]``
 - The code try to find a "xxx.bag" in `[path_to_folder_containing_bag]`, and the output is just in this folder.
 - [path_to_config_file] is a yaml file, which includes topics and imu rate. See samples in ``allan_variance_ros/config`` folder.
 
+**Some comments**
+- Difference between this repo and [imu_utils](https://github.com/gaowenliang/imu_utils): See [this](https://discourse.ros.org/t/open-source-allan-variance-tool-for-rosbags/23136/6)
+- About the config file: `measure_rate` can be set to a number smaller than `imu_rate` to subsample the IMU data. This means that the total computation will take less time, but that you are throwing away higher-frequency information. See [this](https://github.com/ori-drs/allan_variance_ros/issues/9#issuecomment-1132107355)
+
+
+---
 
 # Allan Variance ROS
 ## ROS package which loads a rosbag of IMU data and computes Allan Variance parameters
